@@ -9,6 +9,8 @@ RUN perl-build -DDEBUGGING=-g $BUILD_PERL_VER.$BUILD_PERL_REL /opt/perl-$BUILD_P
     && curl -s https://raw.githubusercontent.com/miyagawa/cpanminus/master/cpanm \
       | /opt/perl-$BUILD_PERL_VER/bin/perl - --notest \
         App::cpanminus \
+        App::cpanoutdated \
+      > /tmp/cpanm.log 2>&1 \
     && rm -fr /root/.cpanm /tmp/*
 
 ENV PATH /opt/perl-$BUILD_PERL_VER/bin:$PATH
