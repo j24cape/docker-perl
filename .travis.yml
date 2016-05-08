@@ -4,12 +4,16 @@ services: docker
 env:
   - VERSION=5.022.002-64bit VARIANT=jessie
   - VERSION=5.020.003-64bit VARIANT=jessie
+  - VERSION=5.022.002-64bit VARIANT=trusty
+  - VERSION=5.020.003-64bit VARIANT=trusty
 
 install:
   - git clone https://github.com/docker-library/official-images.git ~/official-images
+  - git clone https://github.com/j24cape/docker-perl-build.git ~/docker-perl-build
 
 before_script:
   - env | sort
+  - docker build -f "~/docker-perl-build/$VARIANT/Dockerfile" -t "j24cape/perl-build:$VARIANT" .
   - cd "$VERSION/$VARIANT"
   - image="j24cape/perl-build:$VERSION-$VARIANT"
 
