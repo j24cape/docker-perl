@@ -7,3 +7,5 @@ docker run -it --rm j24cape/perl
 docker run -it --rm j24cape/perl cpanm --version
 docker run -it --rm j24cape/perl cpan-outdated --help
 ```
+
+[![Travis CI](https://img.shields.io/travis/j24cape/docker-perl.svg)](https://travis-ci.org/j24cape/docker-perl/branches)

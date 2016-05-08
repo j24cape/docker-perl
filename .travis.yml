@@ -1,0 +1,23 @@
+language: bash
+services: docker
+
+env:
+  - VERSION=5.022.002-64bit VARIANT=jessie
+  - VERSION=5.020.003-64bit VARIANT=jessie
+
+install:
+  - git clone https://github.com/docker-library/official-images.git ~/official-images
+
+before_script:
+  - env | sort
+  - cd "$VERSION/$VARIANT"
+  - image="j24cape/perl-build:$VERSION-$VARIANT"
+
+script:
+  - docker build -t "$image" .
+  - ~/official-images/test/run.sh "$image"
+
+after_script:
+  - docker images
+
+# vim:set et ts=2 sw=2:
