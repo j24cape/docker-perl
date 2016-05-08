@@ -13,9 +13,9 @@ install:
 
 before_script:
   - env | sort
-  - docker build -f "~/docker-perl-build/$VARIANT/Dockerfile" -t "j24cape/perl-build:$VARIANT" .
+  - docker build -f ~/docker-perl-build/$VARIANT/Dockerfile -t "j24cape/perl-build:$VARIANT" .
   - cd "$VERSION/$VARIANT"
-  - image="j24cape/perl-build:$VERSION-$VARIANT"
+  - image="j24cape/perl:$VERSION-$VARIANT"
 
 script:
   - docker build -t "$image" .
